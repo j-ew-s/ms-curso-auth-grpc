@@ -1,2 +1,1 @@
-# ms-curso-auth-grpc
-GRPC server for auth
+# ms-curso-auth-api

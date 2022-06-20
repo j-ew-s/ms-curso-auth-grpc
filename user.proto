@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package user;
+
+message User {
+    string id = 1;
+    string name = 2;
+    string email = 3;
+    Address address = 4;
+    Account account = 5;
+}
+
+message Address{
+    string street = 1;
+    string zipCode = 2;
+}
+
+message Account{
+    string user = 1;
+    string password = 2;
+}
+
+message Token{
+    string token = 1;
+}
+
+message TokenValidation{
+    bool status = 1;
+    string message = 2;
+}
+
+message UserId{
+    string id = 1;
+}
+
+service UserService{
+    rpc GetUser(UserId) returns(User){}
+    rpc IsTokenValid(Token) returns(TokenValidation){}
+}
