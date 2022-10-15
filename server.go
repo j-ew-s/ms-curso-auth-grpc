@@ -5,7 +5,7 @@ import (
 	"log"
 	"net"
 
-	"github.com/j-ew-s/ms-curso-auth-api/user"
+	"github.com/j-ew-s/ms-curso-auth-grpc/auth"
 	"google.golang.org/grpc"
 )
 
@@ -19,9 +19,9 @@ func main() {
 
 	grpcServer := grpc.NewServer()
 
-	userService := user.Server{}
+	userService := auth.Server{}
 
-	user.RegisterUserServiceServer(grpcServer, &userService)
+	auth.RegisterUserServiceServer(grpcServer, &userService)
 
 	err = grpcServer.Serve(lis)
 	if err != nil {

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package auth;
+
+message Token{
+    string token = 1;
+}
+
+message TokenValidation{
+    bool status = 1;
+    string message = 2;
+}
+
+
+service UserService{
+    rpc IsTokenValid(Token) returns(TokenValidation){}
+}
