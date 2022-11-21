@@ -3,5 +3,5 @@
 
 
 # PROTO : Gerar serviços GRPC 
-Cria  auth.pb.go   em auth
-protoc --go_out=plugins=grpc:auth  user.proto
+Cria  auth.pb.go   em auth-services
+ protoc --go_out=plugins=grpc:auth-services  auth.proto

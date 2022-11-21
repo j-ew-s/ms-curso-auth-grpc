@@ -110,25 +110,94 @@ func (m *TokenValidation) GetMessage() string {
 	return ""
 }
 
+type UserInformation struct {
+	Id                   int64    `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Name                 string   `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
+	Username             string   `protobuf:"bytes,3,opt,name=username,proto3" json:"username,omitempty"`
+	Email                string   `protobuf:"bytes,4,opt,name=email,proto3" json:"email,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *UserInformation) Reset()         { *m = UserInformation{} }
+func (m *UserInformation) String() string { return proto.CompactTextString(m) }
+func (*UserInformation) ProtoMessage()    {}
+func (*UserInformation) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8bbd6f3875b0e874, []int{2}
+}
+
+func (m *UserInformation) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UserInformation.Unmarshal(m, b)
+}
+func (m *UserInformation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UserInformation.Marshal(b, m, deterministic)
+}
+func (m *UserInformation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UserInformation.Merge(m, src)
+}
+func (m *UserInformation) XXX_Size() int {
+	return xxx_messageInfo_UserInformation.Size(m)
+}
+func (m *UserInformation) XXX_DiscardUnknown() {
+	xxx_messageInfo_UserInformation.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UserInformation proto.InternalMessageInfo
+
+func (m *UserInformation) GetId() int64 {
+	if m != nil {
+		return m.Id
+	}
+	return 0
+}
+
+func (m *UserInformation) GetName() string {
+	if m != nil {
+		return m.Name
+	}
+	return ""
+}
+
+func (m *UserInformation) GetUsername() string {
+	if m != nil {
+		return m.Username
+	}
+	return ""
+}
+
+func (m *UserInformation) GetEmail() string {
+	if m != nil {
+		return m.Email
+	}
+	return ""
+}
+
 func init() {
 	proto.RegisterType((*Token)(nil), "auth.Token")
 	proto.RegisterType((*TokenValidation)(nil), "auth.TokenValidation")
+	proto.RegisterType((*UserInformation)(nil), "auth.UserInformation")
 }
 
 func init() { proto.RegisterFile("auth.proto", fileDescriptor_8bbd6f3875b0e874) }
 
 var fileDescriptor_8bbd6f3875b0e874 = []byte{
-	// 156 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4a, 0x2c, 0x2d, 0xc9,
-	0xd0, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x01, 0xb1, 0x95, 0x64, 0xb9, 0x58, 0x43, 0xf2,
-	0xb3, 0x53, 0xf3, 0x84, 0x44, 0xb8, 0x58, 0x4b, 0x40, 0x0c, 0x09, 0x46, 0x05, 0x46, 0x0d, 0xce,
-	0x20, 0x08, 0x47, 0xc9, 0x99, 0x8b, 0x1f, 0x2c, 0x1d, 0x96, 0x98, 0x93, 0x99, 0x92, 0x58, 0x92,
-	0x99, 0x9f, 0x27, 0x24, 0xc6, 0xc5, 0x56, 0x5c, 0x92, 0x58, 0x52, 0x5a, 0x0c, 0x56, 0xc9, 0x11,
-	0x04, 0xe5, 0x09, 0x49, 0x70, 0xb1, 0xe7, 0xa6, 0x16, 0x17, 0x27, 0xa6, 0xa7, 0x4a, 0x30, 0x81,
-	0x8d, 0x80, 0x71, 0x8d, 0x9c, 0xb9, 0xb8, 0x43, 0x8b, 0x53, 0x8b, 0x82, 0x53, 0x8b, 0xca, 0x32,
-	0x93, 0x53, 0x85, 0x4c, 0xb8, 0x78, 0x3c, 0x8b, 0x11, 0xa6, 0x0a, 0x71, 0xeb, 0x81, 0x5d, 0x05,
-	0x16, 0x91, 0x12, 0x45, 0xe2, 0x20, 0x2c, 0x55, 0x62, 0x48, 0x62, 0x03, 0xbb, 0xda, 0x18, 0x10,
-	0x00, 0x00, 0xff, 0xff, 0xad, 0xb2, 0x91, 0xa0, 0xc3, 0x00, 0x00, 0x00,
+	// 228 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x90, 0x4f, 0x4b, 0xc4, 0x30,
+	0x10, 0xc5, 0x77, 0xbb, 0xdd, 0xb5, 0xce, 0x8a, 0x0b, 0x83, 0x4a, 0x58, 0x10, 0x24, 0x27, 0x4f,
+	0x45, 0xd4, 0x6f, 0xe0, 0xa9, 0xd7, 0xfa, 0xe7, 0x1e, 0xed, 0x58, 0x83, 0x4d, 0x22, 0xf9, 0xe3,
+	0xe7, 0x97, 0x4c, 0xad, 0x15, 0xf1, 0x36, 0xbf, 0x97, 0xcc, 0xcb, 0x7b, 0x01, 0x50, 0x29, 0xbe,
+	0xd5, 0x1f, 0xde, 0x45, 0x87, 0x65, 0x9e, 0xe5, 0x39, 0xac, 0x1f, 0xdc, 0x3b, 0x59, 0x3c, 0x81,
+	0x75, 0xcc, 0x83, 0x58, 0x5e, 0x2c, 0x2f, 0x0f, 0xdb, 0x11, 0xe4, 0x1d, 0xec, 0xf8, 0xf8, 0x49,
+	0x0d, 0xba, 0x53, 0x51, 0x3b, 0x8b, 0x67, 0xb0, 0x09, 0x51, 0xc5, 0x14, 0xf8, 0x66, 0xd5, 0x7e,
+	0x13, 0x0a, 0x38, 0x30, 0x14, 0x82, 0xea, 0x49, 0x14, 0x6c, 0x31, 0xa1, 0xec, 0x61, 0xf7, 0x18,
+	0xc8, 0x37, 0xf6, 0xd5, 0x79, 0x33, 0x9a, 0x1c, 0x43, 0xa1, 0x3b, 0x36, 0x58, 0xb5, 0x85, 0xee,
+	0x10, 0xa1, 0xb4, 0xca, 0x4c, 0x9b, 0x3c, 0xe3, 0x1e, 0xaa, 0x14, 0xc8, 0xb3, 0xbe, 0x62, 0xfd,
+	0x87, 0x73, 0x5a, 0x32, 0x4a, 0x0f, 0xa2, 0x1c, 0xd3, 0x32, 0x5c, 0x27, 0xd8, 0xe6, 0x87, 0xee,
+	0xc9, 0x7f, 0xea, 0x17, 0xc2, 0x5b, 0x38, 0x6a, 0xc2, 0x1c, 0x1f, 0xb7, 0x35, 0xd7, 0x67, 0x65,
+	0x7f, 0xfa, 0x0b, 0xe6, 0x76, 0x72, 0x81, 0x57, 0x50, 0x4d, 0x69, 0xff, 0xdd, 0xf8, 0x53, 0x45,
+	0x2e, 0x9e, 0x37, 0xfc, 0xa1, 0x37, 0x5f, 0x01, 0x00, 0x00, 0xff, 0xff, 0x9e, 0x15, 0xe1, 0x6f,
+	0x5e, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -144,6 +213,7 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type UserServiceClient interface {
 	IsTokenValid(ctx context.Context, in *Token, opts ...grpc.CallOption) (*TokenValidation, error)
+	UserInfo(ctx context.Context, in *Token, opts ...grpc.CallOption) (*UserInformation, error)
 }
 
 type userServiceClient struct {
@@ -163,9 +233,19 @@ func (c *userServiceClient) IsTokenValid(ctx context.Context, in *Token, opts ..
 	return out, nil
 }
 
+func (c *userServiceClient) UserInfo(ctx context.Context, in *Token, opts ...grpc.CallOption) (*UserInformation, error) {
+	out := new(UserInformation)
+	err := c.cc.Invoke(ctx, "/auth.UserService/UserInfo", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 type UserServiceServer interface {
 	IsTokenValid(context.Context, *Token) (*TokenValidation, error)
+	UserInfo(context.Context, *Token) (*UserInformation, error)
 }
 
 // UnimplementedUserServiceServer can be embedded to have forward compatible implementations.
@@ -174,6 +254,9 @@ type UnimplementedUserServiceServer struct {
 
 func (*UnimplementedUserServiceServer) IsTokenValid(ctx context.Context, req *Token) (*TokenValidation, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method IsTokenValid not implemented")
+}
+func (*UnimplementedUserServiceServer) UserInfo(ctx context.Context, req *Token) (*UserInformation, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UserInfo not implemented")
 }
 
 func RegisterUserServiceServer(s *grpc.Server, srv UserServiceServer) {
@@ -198,6 +281,24 @@ func _UserService_IsTokenValid_Handler(srv interface{}, ctx context.Context, dec
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_UserInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(Token)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).UserInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/auth.UserService/UserInfo",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).UserInfo(ctx, req.(*Token))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _UserService_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "auth.UserService",
 	HandlerType: (*UserServiceServer)(nil),
@@ -205,6 +306,10 @@ var _UserService_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "IsTokenValid",
 			Handler:    _UserService_IsTokenValid_Handler,
+		},
+		{
+			MethodName: "UserInfo",
+			Handler:    _UserService_UserInfo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

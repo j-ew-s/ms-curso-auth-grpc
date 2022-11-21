@@ -8,12 +8,12 @@ import (
 
 func (sqlCommand SQLCommand) IsTokenValid(input string) (*authModels.Authorization, error) {
 
-	authorization := authModels.Authorization{}
+	authorization := &authModels.Authorization{}
 
 	db, err := sqlCommand.OpenConnection()
 	if err != nil {
 		fmt.Println(fmt.Printf(" ERROR :::  %+v ::", err))
-		return &authorization, err
+		return authorization, err
 	}
 
 	err = db.Table("login").
@@ -22,5 +22,27 @@ func (sqlCommand SQLCommand) IsTokenValid(input string) (*authModels.Authorizati
 		Scan(&authorization).
 		Error
 
-	return &authorization, err
+	return authorization, err
+}
+
+func (sqlCommand SQLCommand) GetUserInfo(input string) (*authModels.UserInfo, error) {
+
+	userInfo := &authModels.UserInfo{}
+
+	// GET THE DATA
+	db, err := sqlCommand.OpenConnection()
+	if err != nil {
+		fmt.Println(fmt.Printf(" ERROR :::  %+v ::", err))
+		return userInfo, err
+	}
+
+	err = db.
+		Table("login l").
+		Joins("users u ON l.user_id = u.id").
+		Select("u.username, u.email, u.name, u.id").
+		Where(".token = ? ", input).
+		Scan(&userInfo).
+		Error
+
+	return userInfo, err
 }

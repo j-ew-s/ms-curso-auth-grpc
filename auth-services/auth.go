@@ -43,3 +43,37 @@ func (as *AuthService) IsTokenValid(ctx context.Context, in *Token) (*TokenValid
 	}, err
 
 }
+
+func (as *AuthService) UserInfo(ctx context.Context, in *Token) (*UserInformation, error) {
+	if in.Token == "" {
+		return &UserInformation{}, nil
+	}
+
+	authorization, err := as.DBConn.IsTokenValid(in.Token)
+
+	if err != nil && authorization.Username != "" {
+		fmt.Println(fmt.Printf(" FOUND TOKEN :::  %+v ::", err))
+
+		userInfo, err := as.DBConn.GetUserInfo(in.Token)
+
+		if userInfo.Id <= 0 {
+			return &UserInformation{}, fmt.Errorf("Token Found but no Valid User were found")
+		}
+
+		userInformation := &UserInformation{
+			Id:       userInfo.Id,
+			Username: userInfo.UserName,
+			Name:     userInfo.Name,
+			Email:    userInfo.Email,
+		}
+
+		return userInformation, err
+	}
+
+	if authorization.Username == "" {
+		return &UserInformation{}, fmt.Errorf("Token Expirated")
+	}
+
+	return &UserInformation{}, err
+
+}

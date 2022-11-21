@@ -11,7 +11,15 @@ message TokenValidation{
     string message = 2;
 }
 
+message UserInformation {
+    int64 id =1;
+    string name = 2;
+    string username = 3;
+    string email = 4;
+}
+
 
 service UserService{
     rpc IsTokenValid(Token) returns(TokenValidation){}
+    rpc UserInfo(Token) returns(UserInformation){}
 }
